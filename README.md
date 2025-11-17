@@ -3,6 +3,18 @@
 ## 📋 Project Overview
 This is a **Java-based REST API Automation Framework** built using **Maven**, **TestNG**, and **RestAssured**. The framework follows best practices with a modular architecture, implementing the **Page Object Model (POM)** design pattern for API testing, along with comprehensive logging and reporting capabilities.
 
+Here is the clean section you can directly paste into your `README.md`:
+
+---
+
+## 🌐 Demo Application Resources
+
+| Resource                          | Link                                                                                                                                                                                                                         |
+| --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 🏦 **Test Banking Application**   | [https://swift.techwithjatin.com/](https://swift.techwithjatin.com/)                                                                                                                                                         |
+| 📘 **Swagger UI (API Reference)** | [http://64.227.160.186:8080/swagger-ui/index.html](http://64.227.160.186:8080/swagger-ui/index.html)                                                                                                                         |
+| 📝 **Notion Documentation**       | [https://tech-with-jatin.notion.site/E2E-Automation-Framework-Creation-1526d427c22780328b8fff211ee050b7?pvs=4](https://tech-with-jatin.notion.site/E2E-Automation-Framework-Creation-1526d427c22780328b8fff211ee050b7?pvs=4) |
+
 ## 🏗️ Framework Architecture
 
 ### Project Structure
@@ -265,4 +277,5 @@ This framework can be extended with:
 
 **Framework Version**: 0.0.1-SNAPSHOT  
 **Last Updated**: November 2025
+
 
