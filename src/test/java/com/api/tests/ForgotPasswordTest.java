@@ -2,7 +2,6 @@ package com.api.tests;
 
 import org.testng.annotations.Test;
 import com.api.base.AuthService;
-import com.api.models.request.SignUpRequest;
 
 import io.restassured.response.Response;
 
@@ -16,4 +15,3 @@ public class ForgotPasswordTest {
         System.out.println(response.asPrettyString());
     }
 }
-

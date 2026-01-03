@@ -1,278 +1,362 @@
-# API Automation Framework
+# 🚀 API Automation Framework
 
-## 📋 Project Overview
-This is a **Java-based REST API Automation Framework** built using **Maven**, **TestNG**, and **RestAssured**. The framework follows best practices with a modular architecture, implementing the **Page Object Model (POM)** design pattern for API testing, along with comprehensive logging and reporting capabilities.
+<div align="center">
+
+![Java](https://img.shields.io/badge/Java-11-orange?style=for-the-badge&logo=openjdk&logoColor=white)
+![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)
+![TestNG](https://img.shields.io/badge/TestNG-7.10.2-green?style=for-the-badge)
+![RestAssured](https://img.shields.io/badge/RestAssured-5.3.0-blue?style=for-the-badge)
+![CI/CD](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
+
+**A production-ready REST API Automation Framework built with Java, TestNG, and RestAssured**
+
+[Getting Started](#-getting-started) • [Features](#-key-features) • [Architecture](#%EF%B8%8F-framework-architecture) • [Documentation](#-demo-application-resources)
+
+</div>
+
+---
+
+## 📋 Overview
+
+This is a **modular Java-based REST API Automation Framework** designed to test banking application APIs. Built following industry best practices, it implements the **Service Layer Pattern** combined with comprehensive logging, reporting, and CI/CD integration.
+
+### ✨ What Makes This Framework Special?
+
+- 🏗️ **Clean Architecture** — Separation of concerns with Service, Model, and Test layers
+- 🔄 **Reusable Components** — BaseService wrapper for all HTTP operations
+- 📝 **Comprehensive Logging** — Custom filters for request/response logging
+- 🤖 **CI/CD Ready** — Pre-configured GitHub Actions workflow with scheduled runs
+- 🧪 **Flexible Testing** — TestNG with XML-based suite configuration
+
+---
 
 ## 🌐 Demo Application Resources
 
-| Resource                          | Link                                                                                                                                                                                                                         |
-| --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 🏦 **Test Banking Application**   | [https://swift.techwithjatin.com/](https://swift.techwithjatin.com/)                                                                                                                                                         |
-| 📘 **Swagger UI (API Reference)** | [http://64.227.160.186:8080/swagger-ui/index.html](http://64.227.160.186:8080/swagger-ui/index.html)                                                                                                                         |
-| 📝 **Notion Documentation**       | [https://tech-with-jatin.notion.site/E2E-Automation-Framework-Creation-1526d427c22780328b8fff211ee050b7?pvs=4](https://tech-with-jatin.notion.site/E2E-Automation-Framework-Creation-1526d427c22780328b8fff211ee050b7?pvs=4) |
+| Resource | Description | Link |
+|----------|-------------|------|
+| 🏦 **Banking App** | Test Application UI | [swift.techwithjatin.com](https://swift.techwithjatin.com/) |
+| 📘 **Swagger UI** | API Reference & Documentation | [Swagger Docs](http://64.227.160.186:8080/swagger-ui/index.html) |
+| 📝 **Notion Docs** | E2E Framework Creation Guide | [Notion Page](https://tech-with-jatin.notion.site/E2E-Automation-Framework-Creation-1526d427c22780328b8fff211ee050b7?pvs=4) |
+
+---
 
 ## 🏗️ Framework Architecture
 
-### Project Structure
 ```
 DemoAPIAutomationFramework/
-├── src/test/java/com/api/
-│   ├── base/                          # Service layer (Base classes)
-│   │   ├── BaseService.java           # RestAssured wrapper with common methods
-│   │   ├── AuthService.java           # Authentication API endpoints
-│   │   └── UserProfileManagementService.java  # User profile API endpoints
-│   ├── models/
-│   │   ├── request/                   # Request POJOs
-│   │   │   ├── LoginRequest.java
-│   │   │   ├── SignUpRequest.java
-│   │   │   └── ProfileRequest.java
-│   │   └── response/                  # Response POJOs
-│   │       ├── LoginResponse.java
-│   │       └── UserProfileResponse.java
-│   ├── filters/                       # Custom filters
-│   │   └── LoggingFilter.java         # Request/Response logging filter
-│   ├── listeners/                     # TestNG listeners
-│   │   └── TestListener.java          # Test execution listener
-│   └── tests/                         # Test classes
-│       ├── LoginAPITest3.java
-│       ├── AccountCreationTest.java
-│       ├── ForgotPasswordTest.java
-│       ├── GetProfileRequestTest.java
-│       └── UpdateProfileTest.java
-├── src/test/resources/
-│   └── log4j2.xml                     # Log4j2 configuration
-├── logs/                              # Log files directory
-│   └── test.log                       # Execution logs
-├── test-output/                       # TestNG reports
-│   ├── testng-results.xml
-│   └── emailable-report.html
-├── suite.xml                          # TestNG suite configuration
-└── pom.xml                            # Maven dependencies
+├── 📁 src/test/java/com/api/
+│   │
+│   ├── 📁 base/                              # 🔧 Service Layer
+│   │   ├── BaseService.java                  # RestAssured wrapper with HTTP methods
+│   │   ├── AuthService.java                  # Authentication endpoints (login, signup, forgot-password)
+│   │   └── UserProfileManagementService.java # User profile endpoints (get, update)
+│   │
+│   ├── 📁 models/
+│   │   ├── 📁 request/                       # 📤 Request POJOs
+│   │   │   ├── LoginRequest.java             # Login payload
+│   │   │   ├── SignUpRequest.java            # Signup payload with Builder pattern
+│   │   │   └── ProfileRequest.java           # Profile update payload
+│   │   └── 📁 response/                      # 📥 Response POJOs
+│   │       ├── LoginResponse.java            # Login response mapping
+│   │       └── UserProfileResponse.java      # Profile response mapping
+│   │
+│   ├── 📁 filters/                           # 🔍 Custom Filters
+│   │   └── LoggingFilter.java                # Request/Response logging filter
+│   │
+│   ├── 📁 listeners/                         # 👂 TestNG Listeners
+│   │   └── TestListener.java                 # Test lifecycle event handler
+│   │
+│   └── 📁 tests/                             # 🧪 Test Classes
+│       ├── LoginAPITest3.java                # Login API validation
+│       ├── AccountCreationTest.java          # User signup testing
+│       ├── ForgotPasswordTest.java           # Password recovery testing
+│       ├── GetProfileRequestTest.java        # Get profile testing
+│       └── UpdateProfileTest.java            # Profile update testing
+│
+├── 📁 src/test/resources/
+│   └── log4j2.xml                            # Log4j2 configuration
+│
+├── 📁 .github/workflows/
+│   └── maven.yml                             # GitHub Actions CI/CD pipeline
+│
+├── 📁 logs/                                  # 📋 Execution logs
+├── 📁 test-output/                           # 📊 TestNG reports
+├── suite.xml                                 # TestNG suite configuration
+└── pom.xml                                   # Maven dependencies & build config
 ```
 
-## 🛠️ Technologies & Tools
+---
+
+## 🛠️ Technology Stack
 
 | Technology | Version | Purpose |
-|-----------|---------|---------|
-| **Java** | 11 | Programming Language |
-| **Maven** | - | Build & Dependency Management |
-| **TestNG** | 7.10.2 | Testing Framework |
-| **RestAssured** | 5.3.0 | API Testing Library |
+|:-----------|:-------:|:--------|
+| **Java** | 11 | Core Programming Language |
+| **Maven** | 3.x | Build & Dependency Management |
+| **TestNG** | 7.10.2 | Test Framework with Annotations & Assertions |
+| **RestAssured** | 5.3.0 | Fluent API for HTTP Testing |
 | **Jackson** | 2.18.2 | JSON Serialization/Deserialization |
-| **Log4j2** | 2.20.0 | Logging Framework |
+| **Log4j2** | 2.20.0 | Structured Logging Framework |
+| **GitHub Actions** | - | CI/CD Pipeline & Scheduled Execution |
+
+---
 
 ## 🎯 Key Features
 
-### 1. **Modular Architecture**
-- **Service Layer Pattern**: Separate service classes (`AuthService`, `UserProfileManagementService`) for different API modules
-- **BaseService**: Common RestAssured wrapper providing reusable methods (`postRequest`, `getRequest`, `putRequest`)
-- **Model Classes**: POJO classes for request/response with Builder pattern implementation
+### 1️⃣ Service Layer Pattern
+```java
+// BaseService provides reusable HTTP methods
+public class AuthService extends BaseService {
+    public Response login(LoginRequest payload) {
+        return postRequest(payload, "/api/auth/login");
+    }
+}
+```
+- **BaseService**: Centralized RestAssured configuration with `postRequest()`, `getRequest()`, `putRequest()` methods
+- **AuthService**: Authentication operations (login, signup, forgot-password)
+- **UserProfileManagementService**: Profile operations (get profile, update profile)
 
-### 2. **Advanced Logging**
-- **Custom LoggingFilter**: Automatically logs all API requests and responses
-- **Log4j2 Integration**: Dual logging to console and file (`logs/test.log`)
-- **TestListener**: Captures test execution events (start, success, failure, skip)
+### 2️⃣ Builder Pattern for Request Objects
+```java
+SignUpRequest request = new SignUpRequest.Builder()
+    .username("john_doe")
+    .password("secure123")
+    .email("john@example.com")
+    .firstName("John")
+    .lastName("Doe")
+    .mobileNumber("1234567890")
+    .build();
+```
 
-### 3. **Request/Response Handling**
-- **Builder Pattern**: Implemented in `SignUpRequest` and `ProfileRequest` for flexible object creation
-- **JSON Serialization**: Automatic conversion between Java objects and JSON using Jackson
-- **Token Management**: Dynamic bearer token handling for authenticated requests
+### 3️⃣ Custom Logging Filter
+All API requests and responses are automatically logged:
+```
+08:37:51.330 [main] INFO  LoggingFilter - Base URI:http://64.227.160.186:8080
+08:37:51.331 [main] INFO  LoggingFilter - Request Header:Accept=*/* Content-Type=application/json
+08:37:51.331 [main] INFO  LoggingFilter - Request Body:{"username":"user","password":"pass"}
+08:37:52.532 [main] INFO  LoggingFilter - Response Status: 200
+08:37:52.631 [main] INFO  LoggingFilter - Response Body:{"token": "eyJhbGci..."}
+```
 
-### 4. **Comprehensive Test Coverage**
-- Authentication APIs (Login, Signup, Forgot Password)
-- User Profile Management (Get Profile, Update Profile)
-- Assertion validations using TestNG
+### 4️⃣ TestNG Listeners
+Test lifecycle events are captured for enhanced reporting:
+```
+Test Suite Started!!!
+Started!! loginTest
+Description!! Verify if Login API is working...
+Test Suite Completed!!!
+```
+
+### 5️⃣ CI/CD Integration
+The framework includes a pre-configured GitHub Actions workflow:
+- ✅ Triggered on push/PR to `master` branch
+- ✅ Scheduled runs at **6:00 PM** and **3:00 AM** UTC daily
+- ✅ Automatic artifact upload (logs)
+- ✅ Test report publishing
+
+---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- **Java JDK 11** or higher installed
-- **Maven** installed and configured
-- **Git Bash** or any terminal
+
+| Requirement | Version | Check Command |
+|-------------|---------|---------------|
+| Java JDK | 11+ | `java -version` |
+| Maven | 3.x | `mvn -version` |
+| Git | Latest | `git --version` |
 
 ### Installation
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd DemoAPIAutomationFramework
-   ```
 
-2. **Install dependencies**
-   ```bash
-   mvn clean install
-   ```
+```bash
+# Clone the repository
+git clone https://github.com/your-username/DemoAPIAutomationFramework.git
 
-## ▶️ Execution
+# Navigate to project directory
+cd DemoAPIAutomationFramework
 
-### Run Tests via Maven
+# Install dependencies
+mvn clean install -DskipTests
+```
+
+---
+
+## ▶️ Running Tests
+
+### Execute All Tests
+```bash
+mvn clean test -Dsuite=suite
+```
+
+### Execute with Environment Parameter
 ```bash
 mvn clean test -Dsuite=suite -Denv=qa
 ```
 
-**Parameters:**
-- `-Dsuite=suite` : Specifies the TestNG suite file name (suite.xml)
-- `-Denv=qa` : Environment parameter (can be customized)
+### Run in Verbose Mode
+```bash
+mvn clean test -Dsuite=suite -X
+```
 
-### Suite Configuration
-The `suite.xml` file controls which test classes to execute:
+### Parameters Explained
+
+| Parameter | Description | Example |
+|-----------|-------------|---------|
+| `-Dsuite` | TestNG suite file name (without .xml) | `-Dsuite=suite` |
+| `-Denv` | Environment configuration | `-Denv=qa` |
+| `-X` | Enable debug/verbose output | `-X` |
+
+---
+
+## 🧪 Test Scenarios
+
+| Test Class | API Endpoint | Description |
+|------------|--------------|-------------|
+| `LoginAPITest3` | `POST /api/auth/login` | Validates login with token, email, and ID assertions |
+| `AccountCreationTest` | `POST /api/auth/signup` | Tests new user registration flow |
+| `ForgotPasswordTest` | `POST /api/auth/forgot-password` | Tests password recovery via email |
+| `GetProfileRequestTest` | `GET /api/users/profile` | Retrieves authenticated user profile |
+| `UpdateProfileTest` | `PUT /api/users/profile` | Updates user profile information |
+
+### Sample Test Implementation
+```java
+@Listeners(TestListener.class)
+public class LoginAPITest3 {
+
+    @Test(description = "Verify if Login API is working...")
+    public void loginTest() {
+        LoginRequest loginRequest = new LoginRequest("username", "password");
+        AuthService authService = new AuthService();
+        
+        Response response = authService.login(loginRequest);
+        LoginResponse loginResponse = response.as(LoginResponse.class);
+        
+        Assert.assertNotNull(loginResponse.getToken());
+        Assert.assertEquals(loginResponse.getEmail(), "expected@email.com");
+    }
+}
+```
+
+---
+
+## 📊 Logging & Reporting
+
+### 📁 Log Files
+Execution logs are stored in `logs/test.log`:
+```
+08:37:48.533 [main] INFO  TestListener - Test Suite Started!!!
+08:37:51.330 [main] INFO  LoggingFilter - Base URI:http://64.227.160.186:8080
+08:37:52.943 [main] INFO  TestListener - Started!! loginTest
+08:37:52.993 [main] INFO  TestListener - Test Suite Completed!!!
+```
+
+### 📊 TestNG Reports
+Generated in `test-output/` directory:
+- `index.html` — Comprehensive HTML report
+- `emailable-report.html` — Email-friendly summary
+- `testng-results.xml` — Detailed XML for CI/CD integration
+
+---
+
+## 🔄 CI/CD Pipeline
+
+The framework includes GitHub Actions integration (`.github/workflows/maven.yml`):
+
+```yaml
+name: API Test Framework
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  schedule:
+    - cron: "00 18 * * *"  # 6:00 PM UTC
+    - cron: "00 3 * * *"   # 3:00 AM UTC
+```
+
+### Pipeline Features
+- 🔹 Runs on Ubuntu with JDK 11
+- 🔹 Maven dependency caching
+- 🔹 Test execution with logs
+- 🔹 Artifact upload (logs directory)
+- 🔹 JUnit-style test report publishing
+
+---
+
+## 🔧 Configuration Files
+
+### `suite.xml` — TestNG Suite
 ```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="API Test Suite">
     <test thread-count="5" name="API Test">
         <classes>
             <class name="com.api.tests.LoginAPITest3"/>
+            <!-- Add more test classes as needed -->
         </classes>
     </test>
 </suite>
 ```
 
-To run different tests, modify the `<class>` entries in `suite.xml`.
+### `log4j2.xml` — Logging Configuration
+- **Console Appender**: Real-time console output
+- **File Appender**: Persistent log file (`logs/test.log`)
+- **Pattern**: `%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n`
 
-## 📊 Logging & Reporting
+---
 
-### 1. **Logs**
-All execution logs are stored in `logs/test.log` with the following information:
-- Test suite start/completion
-- Request details (URI, Headers, Body)
-- Response details (Status Code, Headers, Body)
-- Test results (Pass/Fail/Skip)
+## 📌 Design Patterns & Best Practices
 
-**Sample Log Output:**
-```
-08:37:48.533 [main] INFO  com.api.listeners.TestListener - Test Suite Started!!!
-08:37:51.330 [main] INFO  com.api.filters.LoggingFilter - Base URI:http://64.227.160.186:8080
-08:37:51.331 [main] INFO  com.api.filters.LoggingFilter - Request Header:Accept=*/* Content-Type=application/json
-08:37:51.331 [main] INFO  com.api.filters.LoggingFilter - Request Body:{"username":"shreyans1999","password":"shreyans1999"}
-08:37:52.532 [main] INFO  com.api.filters.LoggingFilter - Request Header:Vary=Origin...
-08:37:52.631 [main] INFO  com.api.filters.LoggingFilter - Request Body:{"token": "eyJhbGci...","type": "Bearer"...}
-08:37:52.943 [main] INFO  com.api.listeners.TestListener - Started!! loginTest
-08:37:52.943 [main] INFO  com.api.listeners.TestListener - Description!! Verify if Login API is working...
-08:37:52.993 [main] INFO  com.api.listeners.TestListener - Test Suite Completed!!!
-```
+| Pattern/Practice | Implementation |
+|-----------------|----------------|
+| ✅ **Service Layer Pattern** | Separate service classes for each API module |
+| ✅ **Builder Pattern** | `SignUpRequest.Builder` for flexible object creation |
+| ✅ **POJO Models** | Type-safe request/response serialization |
+| ✅ **Custom Filters** | `LoggingFilter` for cross-cutting logging |
+| ✅ **TestNG Listeners** | `TestListener` for lifecycle event handling |
+| ✅ **Separation of Concerns** | Tests, Services, Models in dedicated packages |
+| ✅ **Centralized Configuration** | Base URL and settings in `BaseService` |
+| ✅ **Token Management** | Dynamic bearer token injection for authenticated requests |
 
-### 2. **TestNG Reports**
-Reports are generated in the `test-output/` directory:
-- **testng-results.xml** : Detailed XML report
-- **emailable-report.html** : HTML email-friendly report
-- **index.html** : Comprehensive HTML report
+---
 
-## 🧪 Test Scenarios
+## 🔮 Future Enhancements
 
-### 1. **LoginAPITest3**
-- **Purpose**: Validates user login functionality
-- **Assertions**: 
-  - Token is not null
-  - Email verification
-  - User ID verification
+- [ ] **Data-Driven Testing** — TestNG DataProvider integration
+- [ ] **Extent Reports** — Advanced HTML reporting with screenshots
+- [ ] **Schema Validation** — JSON schema assertions for responses
+- [ ] **Environment Configs** — Property files for multiple environments
+- [ ] **Parallel Execution** — Enhanced parallel test configuration
+- [ ] **API Contract Testing** — Pact/OpenAPI integration
 
-### 2. **AccountCreationTest**
-- **Purpose**: Tests new user account creation (signup)
-- **Builder Pattern**: Uses SignUpRequest.Builder for request creation
-
-### 3. **ForgotPasswordTest**
-- **Purpose**: Tests password recovery functionality
-- **Input**: User email address
-
-### 4. **GetProfileRequestTest**
-- **Purpose**: Retrieves user profile information
-- **Flow**: Login → Get Token → Fetch Profile
-
-### 5. **UpdateProfileTest**
-- **Purpose**: Updates user profile details
-- **Flow**: Login → Get Profile → Update Profile
-- **Builder Pattern**: Uses ProfileRequest.Builder
-
-## 🔑 Key Implementation Highlights
-
-### BaseService Class
-```java
-- RestAssured wrapper providing reusable HTTP methods
-- Base URI configuration: http://64.227.160.186:8080
-- Bearer token authentication support
-- Global LoggingFilter integration
-```
-
-### LoggingFilter
-```java
-- Intercepts all API requests/responses
-- Logs complete request details (URI, Headers, Body)
-- Logs complete response details (Status, Headers, Body)
-- Integrates with Log4j2 for file and console logging
-```
-
-### Builder Pattern Implementation
-```java
-- Flexible object creation for complex request payloads
-- Used in SignUpRequest and ProfileRequest
-- Improves code readability and maintainability
-```
-
-## 📌 Interview Talking Points
-
-1. **Framework Design Pattern**: 
-   - Implemented Service Layer Pattern separating test logic from API calls
-   - Used Builder Pattern for complex request object creation
-   - POJO models for request/response deserialization
-
-2. **Reusability**: 
-   - BaseService provides common HTTP methods used across all services
-   - Centralized configuration and request specification
-
-3. **Logging Strategy**: 
-   - Custom RestAssured filter for automatic request/response logging
-   - TestNG listener for test lifecycle event logging
-   - Log4j2 dual appender (Console + File)
-
-4. **Test Configuration**: 
-   - Dynamic suite execution via Maven parameters
-   - TestNG XML for flexible test selection
-   - Parallel execution support (thread-count=5)
-
-5. **Authentication Handling**: 
-   - Dynamic bearer token extraction and management
-   - Automatic token injection in authenticated requests
-
-6. **Reporting**: 
-   - TestNG native HTML reports
-   - Detailed execution logs in logs/test.log
-   - XML reports for CI/CD integration
-
-## 🔧 Configuration Files
-
-### pom.xml
-- Maven Surefire Plugin: Executes TestNG suites with dynamic suite parameter
-- All dependencies managed with specific versions
-
-### log4j2.xml
-- Pattern layout: `%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n`
-- Console and File appenders
-- Root logger level: INFO
-
-### suite.xml
-- Configurable test suite
-- Supports parallel execution
-- Easy test class inclusion/exclusion
-
-## 📝 Best Practices Implemented
-
-✅ Separation of concerns (Service, Model, Test layers)  
-✅ POJO model classes for type-safe API interaction  
-✅ Comprehensive logging at all levels  
-✅ Builder pattern for complex object creation  
-✅ TestNG listeners for enhanced reporting  
-✅ RestAssured filters for cross-cutting concerns  
-✅ Maven for dependency and build management  
-✅ Parameterized suite execution  
+---
 
 ## 🤝 Contributing
-This framework can be extended with:
-- Data-driven testing using TestNG DataProvider
-- Integration with CI/CD pipelines (Jenkins, GitHub Actions)
-- Extent Reports for advanced reporting
-- API response schema validation
-- Environment-specific configuration files
 
-**Framework Version**: 0.0.1-SNAPSHOT  
-**Last Updated**: November 2025
+Contributions are welcome! Please feel free to submit a Pull Request.
 
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
+---
 
+## 📄 License
+
+This project is for educational and demonstration purposes.
+
+---
+
+<div align="center">
+
+**Framework Version**: `0.0.1-SNAPSHOT`
+
+**Last Updated**: January 2026
+
+Made with ❤️ for API Testing
+
+</div>
